@@ -1,0 +1,25 @@
+<section class="container full-height">
+    <div class="row align-items-center justify-content-center full-height">
+        <form (submit)="loginUser($event)">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="username" class="form-control" id="username"
+                       placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Username</label>
+                <input type="password" class="form-control" id="password"
+                       placeholder="Enter password">
+            </div>
+            <div class="row justify-content-around">
+                <button class="btn btn-secondary button--width" type="submit">Login</button>
+                <button class="btn btn-secondary button--width" routerLink="/register">Register</button>
+            </div>
+            <div class="row justify-content-center mt-2">
+                <div class="col alert alert-danger text-center" role="alert" *ngIf="notFound">
+                    User not found!
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

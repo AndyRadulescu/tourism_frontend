@@ -1,3 +1,23 @@
-<p>
-  main works!
-</p>
+<section class="section--main">
+    <div class="container">
+        <div class="text-container row justify-content-center">
+            <img src="../../../assets/main/logo.png">
+
+            <div class="row justify-content-center w-100">
+                <input type="text" class="form-control mt-2 mb-4 col-8" placeholder="Recipient's username"
+                       aria-label="Recipient's username"
+                       aria-describedby="basic-addon2">
+                <div class="col-2 search--container">
+                    <button type="button" class="btn btn-primary mt-2 mb-4 search--btn" (click)="Search()">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</section>
+
+

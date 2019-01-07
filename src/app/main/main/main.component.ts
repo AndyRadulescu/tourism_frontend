@@ -17,4 +17,12 @@ export class MainComponent implements OnInit {
         }
     }
 
+    logout() {
+        localStorage.removeItem('token');
+        this.router.navigate(['login']);
+    }
+
+    Search() {
+
+    }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {UserDTO} from './UserDTO';
+import {LoginService} from '../login.service';
 
 @Component({
     selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
     public confirmPassword: String;
     public loader = true;
 
-    constructor(private router: Router, private http: HttpClient) {
+    constructor(private router: Router, private loginService: LoginService) {
     }
 
     ngOnInit() {
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
         console.log(this.userDto);
         this.loader = false;
 
-        this.post(this.userDto)
+        this.loginService.post(this.userDto)
             .subscribe((receivedUser) => {
                     console.log(receivedUser);
                     this.loader = true;
@@ -44,9 +45,5 @@ export class RegisterComponent implements OnInit {
                     this.error = true;
                     this.success = false;
                 });
-    }
-
-    post(userDto) {
-        return this.http.post('http://localhost:8000/api/user', userDto);
     }
 }

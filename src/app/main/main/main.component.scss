@@ -1,0 +1,19 @@
+.section--main {
+  background-color: #eeeeee;
+  height: 100vh;
+
+  .text-container {
+    .text {
+      font-size: 20px;
+      width: 400px;
+    }
+  }
+
+  .search--container {
+    padding-left: 0;
+
+    .search--btn {
+      padding: 6px 22px;
+    }
+  }
+}

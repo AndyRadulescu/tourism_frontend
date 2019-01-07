@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MainComponent} from './main/main/main.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {FormsModule} from '@angular/forms';
+import { HotelListComponent } from './main/main/hotel-list/hotel-list.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import {FormsModule} from '@angular/forms';
         LoginComponent,
         PageNotFoundComponent,
         MainComponent,
-        RegisterComponent
+        RegisterComponent,
+        HotelListComponent
     ],
     imports: [
         BrowserModule,

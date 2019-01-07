@@ -4,16 +4,22 @@
             <img src="../../../assets/main/logo.png">
 
             <div class="row justify-content-center w-100">
-                <input type="text" class="form-control mt-2 mb-4 col-8" placeholder="Recipient's username"
-                       aria-label="Recipient's username"
+                <input [(ngModel)]="auxLocationSearch" type="text" class="form-control mt-2 mb-4 col-8"
+                       placeholder="Recipient's username" aria-label="Recipient's username"
                        aria-describedby="basic-addon2">
                 <div class="col-2 search--container">
-                    <button type="button" class="btn btn-primary mt-2 mb-4 search--btn" (click)="Search()">
+                    <button type="button" class="btn btn-primary mt-2 mb-4 search--btn" (click)="search()">
                         Search
                     </button>
                 </div>
+
+                <div [ngClass]="{'invisible':hotelFound,'visible':!hotelFound}">
+                    <p class="text-danger">No hotels for the location <b>{{locationSearch}}</b> have been found</p>
+                </div>
             </div>
         </div>
+
+        <app-hotel-list></app-hotel-list>
         <div class="row justify-content-center">
             <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
         </div>

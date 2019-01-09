@@ -9,7 +9,10 @@ import {HttpClientModule} from '@angular/common/http';
 import {MainComponent} from './main/main/main.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {FormsModule} from '@angular/forms';
-import { HotelListComponent } from './main/main/hotel-list/hotel-list.component';
+import {HotelListComponent} from './main/main/hotel-list/hotel-list.component';
+import {CommonModule} from '@angular/common';
+import {MapComponent} from './main/main/hotel-list/map/map.component';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
     declarations: [
@@ -18,13 +21,18 @@ import { HotelListComponent } from './main/main/hotel-list/hotel-list.component'
         PageNotFoundComponent,
         MainComponent,
         RegisterComponent,
-        HotelListComponent
+        HotelListComponent,
+        MapComponent
     ],
     imports: [
         BrowserModule,
+        CommonModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyBMI6wpkC90IowArIGxnJPJnn0_cn6h1S4'
+        })
     ],
     providers: [],
     bootstrap: [AppComponent]

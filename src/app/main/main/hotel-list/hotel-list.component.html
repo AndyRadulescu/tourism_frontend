@@ -1,3 +1,25 @@
-<p>
-  hotel-list works!
-</p>
+<div *ngIf="hotelList" class="hotel-list--container">
+    <div *ngFor="let hotel of hotelList">
+        <div class="hotel--item row mb-2">
+            <div class="image--container col-lg-3 pl-0 ">
+                <img src="{{hotel.image_url}}" alt="hotel image">
+            </div>
+            <div class="content--container col-lg-5">
+                <h2 class="hotel-title text-center">{{hotel.name}}</h2>
+                <p class="hotel-info mb-1">{{hotel.country}} {{hotel.city}} {{hotel.street_address}}</p>
+                <span><b>Contact: </b></span>
+                <span class="hotel-info mb-1"> {{hotel.phone}}</span>
+
+                <ul class="star--container text-center pl-0">
+                    <li *ngFor="let star of toArray(hotel.stars)">
+                        <img class="star-icon" src="../../../../assets/hotelItem/star.png" alt="star">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 pr-0">
+                <app-map [lat]="lat" [lng]="lng"></app-map>
+            </div>
+        </div>
+
+    </div>
+</div>

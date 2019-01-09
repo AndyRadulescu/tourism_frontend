@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HotelFinderService} from '../hotel-finder.service';
+import Hotel from '../../model/Hotel';
 
 @Component({
     selector: 'app-main',
@@ -8,13 +9,14 @@ import {HotelFinderService} from '../hotel-finder.service';
     styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-
-    constructor(private router: Router, private hotelFinder: HotelFinderService) {
-    }
-
     public locationSearch: String = '';
     public auxLocationSearch: String = '';
     public hotelFound: boolean = true;
+    public hotelList: Hotel[];
+
+
+    constructor(private router: Router, private hotelFinder: HotelFinderService) {
+    }
 
     ngOnInit() {
         if (!localStorage.getItem('token')) {
@@ -30,7 +32,7 @@ export class MainComponent implements OnInit {
     search() {
         console.log(this.locationSearch);
         this.hotelFinder.post(this.auxLocationSearch).subscribe((hotels: any) => {
-            console.log(hotels);
+            this.hotelList = hotels.hotelList;
             this.locationSearch = this.auxLocationSearch;
             this.hotelFound = hotels.hotelList.length > 0;
         });

@@ -5,7 +5,7 @@
 
             <div class="row justify-content-center w-100">
                 <input [(ngModel)]="auxLocationSearch" type="text" class="form-control mt-2 mb-4 col-8"
-                       placeholder="Recipient's username" aria-label="Recipient's username"
+                       placeholder="Location" aria-label="Recipient's username"
                        aria-describedby="basic-addon2">
                 <div class="col-2 search--container">
                     <button type="button" class="btn btn-primary mt-2 mb-4 search--btn" (click)="search()">
@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <app-hotel-list></app-hotel-list>
+        <app-hotel-list [hotelList]="hotelList"></app-hotel-list>
         <div class="row justify-content-center">
             <button type="button" class="btn btn-primary" (click)="logout()">Logout</button>
         </div>

@@ -13,6 +13,9 @@ import {HotelListComponent} from './main/main/hotel-list/hotel-list.component';
 import {CommonModule} from '@angular/common';
 import {MapComponent} from './main/main/hotel-list/map/map.component';
 import {AgmCoreModule} from '@agm/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DatePickerComponent } from './main/main/date-picker/date-picker.component';
+
 
 @NgModule({
     declarations: [
@@ -22,7 +25,8 @@ import {AgmCoreModule} from '@agm/core';
         MainComponent,
         RegisterComponent,
         HotelListComponent,
-        MapComponent
+        MapComponent,
+        DatePickerComponent
     ],
     imports: [
         BrowserModule,
@@ -30,9 +34,10 @@ import {AgmCoreModule} from '@agm/core';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
+        NgbModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBMI6wpkC90IowArIGxnJPJnn0_cn6h1S4'
-        })
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent]

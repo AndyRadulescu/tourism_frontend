@@ -9,7 +9,7 @@ export class HotelFinderService {
     constructor(private http: HttpClient) {
     }
 
-    post(location) {
-        return this.http.post('http://localhost:8000/api/hotel', {country: location});
+    post(slug, body) {
+        return this.http.post(`http://localhost:8000/api/${slug}`, body);
     }
 }

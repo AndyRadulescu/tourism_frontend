@@ -13,6 +13,7 @@ export class MainComponent implements OnInit {
     public auxLocationSearch: String = '';
     public hotelFound: boolean = true;
     public hotelList: Hotel[];
+    public dateInterval = 'ceval';
 
 
     constructor(private router: Router, private hotelFinder: HotelFinderService) {
@@ -31,10 +32,14 @@ export class MainComponent implements OnInit {
 
     search() {
         console.log(this.locationSearch);
-        this.hotelFinder.post(this.auxLocationSearch).subscribe((hotels: any) => {
+        this.hotelFinder.post('hotel', {country: this.auxLocationSearch}).subscribe((hotels: any) => {
             this.hotelList = hotels.hotelList;
             this.locationSearch = this.auxLocationSearch;
             this.hotelFound = hotels.hotelList.length > 0;
         });
+    }
+
+    setDateInterval(dateInterval) {
+        this.dateInterval = dateInterval;
     }
 }

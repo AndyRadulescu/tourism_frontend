@@ -10,6 +10,6 @@ export class HotelFinderService {
     }
 
     post(slug, body) {
-        return this.http.post(`http://localhost:8000/api/${slug}`, body);
+        return this.http.post(`http://localhost:8080/api/${slug}`, body);
     }
 }

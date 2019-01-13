@@ -11,9 +11,10 @@ import Hotel from '../../model/Hotel';
 export class MainComponent implements OnInit {
     public locationSearch: String = '';
     public auxLocationSearch: String = '';
-    public hotelFound: boolean = true;
+    public hotelFound = true;
     public hotelList: Hotel[];
-    public dateInterval = 'ceval';
+    public dateInterval;
+    public calendarOK = true;
 
 
     constructor(private router: Router, private hotelFinder: HotelFinderService) {
@@ -32,11 +33,34 @@ export class MainComponent implements OnInit {
 
     search() {
         console.log(this.locationSearch);
-        this.hotelFinder.post('hotel', {country: this.auxLocationSearch}).subscribe((hotels: any) => {
-            this.hotelList = hotels.hotelList;
-            this.locationSearch = this.auxLocationSearch;
-            this.hotelFound = hotels.hotelList.length > 0;
+        if (this.dateInterval.toDate) {
+            console.log(this.dateInterval);
+            this.calendarOK = true;
+            this.hotelFinder.post('hotel', {
+                country: this.auxLocationSearch,
+                dateInterval: this.dateInterval
+            }).subscribe((rooms: any) => {
+
+                this.hotelList = this.getHotelList(rooms.roomList);
+                this.locationSearch = this.auxLocationSearch;
+                this.hotelFound = this.hotelList.length > 0;
+            }, ((err) => {
+                console.log(err);
+                this.hotelFound = false;
+            }));
+        } else {
+            this.calendarOK = false;
+        }
+    }
+
+    getHotelList(roomList) {
+        const hotelList = [];
+
+        roomList.forEach((item) => {
+            hotelList.push(item.hotel);
         });
+
+        return hotelList;
     }
 
     setDateInterval(dateInterval) {

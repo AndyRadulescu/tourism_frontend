@@ -5,13 +5,15 @@ import {LoginComponent} from './auth/login/login.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {MainComponent} from './main/main/main.component';
 import {RegisterComponent} from './auth/register/register.component';
+import {RoomDetailComponent} from './main/room-detail/room-detail.component';
 
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'detail', component: RoomDetailComponent},
     {path: '', component: MainComponent},
     {path: '', redirectTo: '/', pathMatch: 'full'},
-    {path: '**', component: PageNotFoundComponent}
+    {path: '**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

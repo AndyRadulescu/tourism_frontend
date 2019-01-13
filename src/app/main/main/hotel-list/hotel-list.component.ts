@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, OnChanges, SimpleChanges, NgZone} from '@angular/core';
 import Hotel from '../../../model/Hotel';
+import {NavigationExtras, Router} from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import Hotel from '../../../model/Hotel';
 export class HotelListComponent implements OnInit, OnChanges {
     @Input() hotelList: Hotel[];
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     ngOnInit() {
@@ -24,5 +25,15 @@ export class HotelListComponent implements OnInit, OnChanges {
 
     toArray(stars: Number) {
         return Array(stars);
+    }
+
+    linkToDetail(hotel) {
+        console.log(hotel);
+        const navigationExtras: NavigationExtras = {
+            queryParams: {
+                'hotel': hotel.id
+            }
+        };
+        this.router.navigate(['detail'], navigationExtras);
     }
 }

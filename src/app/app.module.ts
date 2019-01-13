@@ -15,6 +15,7 @@ import {MapComponent} from './main/main/hotel-list/map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DatePickerComponent } from './main/main/date-picker/date-picker.component';
+import { RoomDetailComponent } from './main/room-detail/room-detail.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { DatePickerComponent } from './main/main/date-picker/date-picker.compone
         RegisterComponent,
         HotelListComponent,
         MapComponent,
-        DatePickerComponent
+        DatePickerComponent,
+        RoomDetailComponent
     ],
     imports: [
         BrowserModule,

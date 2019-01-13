@@ -1,6 +1,6 @@
 <div *ngIf="hotelList" class="hotel-list--container">
     <div *ngFor="let hotel of hotelList">
-        <div class="hotel--item row mb-2">
+        <div class="hotel--item row mb-2" (click)="linkToDetail(hotel)">
             <div class="image--container col-lg-3 pl-0 ">
                 <img src="{{hotel.image_url}}" alt="hotel image">
             </div>

@@ -1,0 +1,20 @@
+import {Injectable} from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class GlobalsService {
+
+    constructor() {
+    }
+
+    rooms: any;
+
+    setRooms(rooms) {
+        this.rooms = rooms;
+    }
+
+    getRooms() {
+        return this.rooms;
+    }
+}

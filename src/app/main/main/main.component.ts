@@ -2,6 +2,7 @@ import {Component, NgZone, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HotelFinderService} from '../hotel-finder.service';
 import Hotel from '../../model/Hotel';
+import {GlobalsService} from '../../globals.service';
 
 @Component({
     selector: 'app-main',
@@ -17,7 +18,7 @@ export class MainComponent implements OnInit {
     public calendarOK = true;
 
 
-    constructor(private router: Router, private hotelFinder: HotelFinderService) {
+    constructor(private router: Router, private hotelFinder: HotelFinderService, private globals: GlobalsService) {
     }
 
     ngOnInit() {
@@ -40,7 +41,7 @@ export class MainComponent implements OnInit {
                 country: this.auxLocationSearch,
                 dateInterval: this.dateInterval
             }).subscribe((rooms: any) => {
-
+                this.globals.setRooms(rooms.roomList);
                 this.hotelList = this.getHotelList(rooms.roomList);
                 this.locationSearch = this.auxLocationSearch;
                 this.hotelFound = this.hotelList.length > 0;

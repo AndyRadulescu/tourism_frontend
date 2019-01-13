@@ -16,6 +16,7 @@ import {AgmCoreModule} from '@agm/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DatePickerComponent } from './main/main/date-picker/date-picker.component';
 import { RoomDetailComponent } from './main/room-detail/room-detail.component';
+import { ToDateStringPipe } from './main/room-detail/to-date-string.pipe';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { RoomDetailComponent } from './main/room-detail/room-detail.component';
         HotelListComponent,
         MapComponent,
         DatePickerComponent,
-        RoomDetailComponent
+        RoomDetailComponent,
+        ToDateStringPipe
     ],
     imports: [
         BrowserModule,

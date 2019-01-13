@@ -1,1 +1,33 @@
-{{hotel}}
+<div class="container">
+    <div class="hotel--item row mb-2">
+        <div class="image--container col-lg-3 pl-0 ">
+            <img src="{{actualHotel.image_url}}" alt="hotel image">
+        </div>
+        <div class="content--container col-lg-7">
+            <h2 class="hotel-title text-center">{{actualHotel.name}}</h2>
+            <p class="hotel-info mb-1">{{actualHotel.country}} {{actualHotel.city}} {{actualHotel.street_address}}</p>
+            <span><b>Contact: </b></span>
+            <span class="hotel-info mb-1"> {{actualHotel.phone}}</span>
+
+            <ul class="star--container text-center pl-0">
+                <li *ngFor="let star of toArray(actualHotel.stars)">
+                    <img class="star-icon" src="../../../../assets/hotelItem/star.png" alt="star">
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <hr>
+    <h2 class="hotel-title">ROOMS:</h2>
+
+    <div class="row">
+        <div class="col-lg-3 hotel--item text-center" *ngFor="let room of actualRoomList">
+            <h2 class="hotel-title">{{room.number}}</h2>
+            <p>{{room.description}}</p>
+            <p>Start date: {{room.start_date | toDateString}}</p>
+            <p>End date: {{room.end_date | toDateString}}</p>
+            <button type="button" class="btn btn-danger">Take Room</button>
+        </div>
+    </div>
+</div>

@@ -25,7 +25,7 @@ export class MapComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['hotel']) {
+        if (changes['hotelID']) {
             console.log(this.hotel);
             this.geocoder.geocode({
                 'address': `${this.hotel.street_address}, ${this.hotel.city}`

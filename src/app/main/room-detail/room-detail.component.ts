@@ -10,18 +10,36 @@ import {GlobalsService} from '../../globals.service';
 })
 export class RoomDetailComponent implements OnInit {
 
-    public hotel: Hotel;
+    public hotelID: String;
+    public rooms = [];
+    public actualRoomList = [];
+    public actualHotel;
 
     constructor(private route: ActivatedRoute, private globals: GlobalsService) {
     }
 
     ngOnInit() {
-        console.log(this.globals.getRooms());
+        this.rooms = this.globals.getRooms();
         this.route.queryParams.subscribe(params => {
-            this.hotel = params['hotel'];
-
-            console.log(params['hotel']);
+            this.hotelID = params['hotel'];
+            this.getHotel();
         });
     }
 
+    getHotel() {
+        console.log(this.rooms);
+        this.rooms.forEach((room) => {
+            if (room.hotel.id === this.hotelID) {
+                this.actualRoomList.push(room);
+            }
+        });
+
+        this.actualHotel = this.actualRoomList[0].hotel;
+        console.log(this.actualHotel);
+        console.log(this.actualRoomList);
+    }
+
+    toArray(stars: String) {
+        return Array(stars);
+    }
 }

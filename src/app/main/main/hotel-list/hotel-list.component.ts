@@ -28,7 +28,6 @@ export class HotelListComponent implements OnInit, OnChanges {
     }
 
     linkToDetail(hotel) {
-        console.log(hotel);
         const navigationExtras: NavigationExtras = {
             queryParams: {
                 'hotel': hotel.id

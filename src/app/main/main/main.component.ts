@@ -41,8 +41,9 @@ export class MainComponent implements OnInit {
                 country: this.auxLocationSearch,
                 dateInterval: this.dateInterval
             }).subscribe((rooms: any) => {
-                this.globals.setRooms(rooms.roomList);
+                console.log(rooms);
                 this.hotelList = this.getHotelList(rooms.roomList);
+                this.globals.setRooms(rooms.roomList);
                 this.locationSearch = this.auxLocationSearch;
                 this.hotelFound = this.hotelList.length > 0;
             }, ((err) => {

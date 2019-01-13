@@ -18,15 +18,14 @@ export class MapComponent implements OnInit, OnChanges {
     constructor(public mapsApiLoader: MapsAPILoader, private zone: NgZone) {
         this.mapsApiLoader = mapsApiLoader;
         this.zone = zone;
-            this.geocoder = new google.maps.Geocoder();
+        this.geocoder = new google.maps.Geocoder();
     }
 
     ngOnInit() {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes['hotelID']) {
-            console.log(this.hotel);
+        if (changes['hotel']) {
             this.geocoder.geocode({
                 'address': `${this.hotel.street_address}, ${this.hotel.city}`
             }, (results, status) => {
@@ -34,7 +33,6 @@ export class MapComponent implements OnInit, OnChanges {
                     // decompose the result
                     this.lat = results[0].geometry.location.lat();
                     this.lng = results[0].geometry.location.lng();
-
                 } else {
                     alert('Sorry, this search produced no results.');
                 }

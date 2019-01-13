@@ -2,13 +2,14 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgbCalendar, NgbDate} from '@ng-bootstrap/ng-bootstrap';
 import {from} from 'rxjs';
 import {HotelFinderService} from '../../hotel-finder.service';
+import {calendar} from 'ngx-bootstrap/chronos/moment/calendar';
 
 @Component({
     selector: 'app-date-picker',
     templateUrl: './date-picker.component.html',
     styleUrls: ['./date-picker.component.scss']
 })
-export class DatePickerComponent {
+export class DatePickerComponent implements OnInit {
 
     hoveredDate: NgbDate;
 
@@ -16,9 +17,14 @@ export class DatePickerComponent {
     toDate: NgbDate;
     @Output() dateInterval = new EventEmitter<Object>();
 
-    constructor(public calendar: NgbCalendar, private hotelFinder: HotelFinderService) {
-        this.fromDate = calendar.getToday();
-        this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+    constructor(private ngbCalendar: NgbCalendar, private hotelFinder: HotelFinderService) {
+    }
+
+    ngOnInit(): void {
+        this.fromDate = this.ngbCalendar.getToday();
+        this.toDate = this.ngbCalendar.getNext(this.ngbCalendar.getToday(), 'd', 10);
+        console.log(this.fromDate);
+        this.dateInterval.emit({fromDate: this.fromDate, toDate: this.toDate});
     }
 
     onDateSelection(date: NgbDate) {
@@ -44,5 +50,6 @@ export class DatePickerComponent {
     isRange(date: NgbDate) {
         return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
     }
+
 
 }

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {HotelFinderService} from '../hotel-finder.service';
 import Hotel from '../../model/Hotel';
 import {GlobalsService} from '../../globals.service';
+import {UserServiceService} from '../user-service.service';
 
 @Component({
     selector: 'app-main',
@@ -18,12 +19,23 @@ export class MainComponent implements OnInit {
     public calendarOK = true;
 
 
-    constructor(private router: Router, private hotelFinder: HotelFinderService, private globals: GlobalsService) {
+    constructor(private router: Router, private hotelFinder: HotelFinderService, private globals: GlobalsService,
+                private userService: UserServiceService) {
     }
 
     ngOnInit() {
         if (!localStorage.getItem('token')) {
             this.router.navigate(['login']);
+        } else {
+            this.userService.sync().subscribe((token) => {
+                console.log(token);
+            }, (err) => {
+                console.log(err);
+                if (err.status === 401) {
+                    localStorage.removeItem('token');
+                    this.router.navigate(['login']);
+                }
+            });
         }
     }
 

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GlobalsService} from '../../globals.service';
-import {UserServiceService} from './user-service.service';
+import {UserServiceService} from '../user-service.service';
 
 @Component({
     selector: 'app-room-detail',
@@ -16,24 +16,38 @@ export class RoomDetailComponent implements OnInit {
     public actualHotel;
     public takenRoomsID: String[] = [];
 
-    constructor(private route: ActivatedRoute, private globals: GlobalsService, private postService: UserServiceService,
+    constructor(private route: ActivatedRoute, private globals: GlobalsService, private userService: UserServiceService,
                 private router: Router) {
     }
 
     ngOnInit() {
         if (!localStorage.getItem('token')) {
             this.router.navigate(['login']);
-        } else {
-            this.rooms = this.globals.getRooms();
-            this.route.queryParams.subscribe(params => {
-                this.hotelID = params['hotel'];
-                this.getHotel();
-            });
+            return;
         }
+        this.userService.sync().subscribe((token) => {
+
+        }, (err) => {
+            console.log(err);
+            if (err.status === 401) {
+                localStorage.removeItem('token');
+                this.router.navigate(['login']);
+                return;
+            }
+        });
+        console.log('ceva2');
+        this.rooms = this.globals.getRooms();
+        this.route.queryParams.subscribe(params => {
+            this.hotelID = params['hotel'];
+            if (this.rooms) {
+                this.getHotel();
+            } else {
+                this.router.navigate(['']);
+            }
+        });
     }
 
     getHotel() {
-        console.log(this.rooms);
         this.rooms.forEach((room) => {
             if (room.hotel.id === this.hotelID) {
                 room.taken = false;
@@ -63,8 +77,15 @@ export class RoomDetailComponent implements OnInit {
     }
 
     buyRooms() {
-        this.postService.post('user/rooms', {rooms: this.rooms}).subscribe(() => {
+        this.userService.post('user/rooms', {rooms: this.takenRoomsID}).subscribe(() => {
             alert('Successfully bought!');
+            this.router.navigate(['']);
+        }, (err) => {
+            if (err.status === 401) {
+                this.router.navigate(['login']);
+            } else if (err.status === 404) {
+                alert('the server might be down');
+            }
         });
     }
 }

@@ -10,6 +10,6 @@ export class LoginService {
     }
 
     post(userDto) {
-        return this.http.post('http://localhost:8000/api/user', userDto);
+        return this.http.post('http://localhost:8080/api/user', userDto);
     }
 }

@@ -41,6 +41,6 @@ export class LoginComponent implements OnInit {
 
     post(username, password) {
         const user = {username, password};
-        return this.http.post('http://localhost:8000/api/user/login', user);
+        return this.http.post('http://localhost:8080/api/user/login', user);
     }
 }

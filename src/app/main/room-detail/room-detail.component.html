@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="hotel--item row mb-2">
+    <div class="hotel--item row mb-2" *ngIf="actualHotel">
         <div class="image--container col-lg-3 pl-0 ">
             <img src="{{actualHotel.image_url}}" alt="hotel image">
         </div>

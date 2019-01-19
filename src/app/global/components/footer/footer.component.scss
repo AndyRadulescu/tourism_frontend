@@ -1,0 +1,24 @@
+@import "../../../../styles/base/variables";
+
+.section--footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: $darkColor;
+  .footer__title-size {
+    font-size: 26px;
+  }
+  span {
+    cursor: pointer;
+    padding: 0 5px;
+  }
+  span:hover {
+    color: gray;
+    background-color: $hoverGlobalsColor;
+    border-radius: 3px;
+  }
+  .social-links {
+    img {
+      margin-right: 7px;
+    }
+  }
+}

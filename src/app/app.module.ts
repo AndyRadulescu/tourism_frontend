@@ -19,6 +19,7 @@ import {RoomDetailComponent} from './main/room-detail/room-detail.component';
 import {ToDateStringPipe} from './main/room-detail/to-date-string.pipe';
 import {FooterComponent} from './global/components/footer/footer.component';
 import {NavbarComponent} from './global/components/navbar/navbar.component';
+import {AboutmeComponent} from './main/aboutme/aboutme.component';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import {NavbarComponent} from './global/components/navbar/navbar.component';
         FooterComponent,
         DatePickerComponent,
         RoomDetailComponent,
-        ToDateStringPipe
+        AboutmeComponent,
+        ToDateStringPipe,
+        AboutmeComponent
     ],
     imports: [
         BrowserModule,

@@ -13,6 +13,9 @@
                 <a class="nav-link" routerLink="about">About User</a>
             </li>
             <li class="nav-item" *ngIf="isLoggedIn">
+                <a class="nav-link" routerLink="about">About User</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn">
                 <a class="nav-link" routerLink="contact" (click)="logout()">{{loginOrLogout}}</a>
             </li>
         </ul>

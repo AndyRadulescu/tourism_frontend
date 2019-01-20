@@ -57,7 +57,6 @@ export class RoomDetailComponent implements OnInit {
 
         this.actualHotel = this.actualRoomList[0].hotel;
         console.log(this.actualHotel);
-        console.log(this.actualRoomList);
     }
 
     toArray(stars: String) {

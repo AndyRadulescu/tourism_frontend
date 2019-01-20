@@ -27,8 +27,7 @@ export class MainComponent implements OnInit {
         if (!localStorage.getItem('token')) {
             this.router.navigate(['login']);
         } else {
-            this.userService.sync().subscribe((token) => {
-                console.log(token);
+            this.userService.sync().subscribe(() => {
             }, (err) => {
                 console.log(err);
                 if (err.status === 401) {

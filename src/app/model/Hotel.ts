@@ -6,18 +6,20 @@ export default class Hotel {
     private _stars: String;
     private _phone: String;
     private _email: String;
+    private _description: String;
     private _country: String;
     private _city: String;
     private _street_address: String;
     private _image_url: String;
     private _rooms: Room[];
 
-    constructor(id?: String, name?: String, stars?: String, phone?: String, email?: String, country?: String, city?: String,
+    constructor(id?: String, name?: String, stars?: String, phone?: String, description?: String, email?: String, country?: String, city?: String,
                 street_address?: String, image_url?: String, rooms?: Room[]) {
         this._id = id;
         this._name = name;
         this._stars = stars;
         this._phone = phone;
+        this._description = description;
         this._email = email;
         this._country = country;
         this._city = city;

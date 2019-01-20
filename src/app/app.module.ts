@@ -14,9 +14,11 @@ import {CommonModule} from '@angular/common';
 import {MapComponent} from './main/main/hotel-list/map/map.component';
 import {AgmCoreModule} from '@agm/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { DatePickerComponent } from './main/main/date-picker/date-picker.component';
-import { RoomDetailComponent } from './main/room-detail/room-detail.component';
-import { ToDateStringPipe } from './main/room-detail/to-date-string.pipe';
+import {DatePickerComponent} from './main/main/date-picker/date-picker.component';
+import {RoomDetailComponent} from './main/room-detail/room-detail.component';
+import {ToDateStringPipe} from './main/room-detail/to-date-string.pipe';
+import {FooterComponent} from './global/components/footer/footer.component';
+import {NavbarComponent} from './global/components/navbar/navbar.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { ToDateStringPipe } from './main/room-detail/to-date-string.pipe';
         RegisterComponent,
         HotelListComponent,
         MapComponent,
+        NavbarComponent,
+        FooterComponent,
         DatePickerComponent,
         RoomDetailComponent,
         ToDateStringPipe

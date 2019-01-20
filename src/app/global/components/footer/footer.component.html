@@ -5,26 +5,18 @@
     </div>
     <div class="row justify-content-center links mb-3">
         <span class="text-light" routerLink="/">Home</span>
-        <span class="text-light" routerLink="contact">Contact</span>
-        <span class="text-light" routerLink="about">About Me</span>
+        <span class="text-light" triggers="click" [autoClose]="'outside'" placement="top"
+              ngbTooltip="Phone: +40 767 760 454
+                          email: tomutcornel@gmail.com">Contact</span>
+        <span class="text-light" triggers="click" [autoClose]="'outside'" placement="top"
+              ngbTooltip="Select the period you want to go for a vacation, then, select the country.
+                          A list of hotels will appear.">Help</span>
     </div>
     <div class="row justify-content-center">
         <div class="social-links">
-            <a href="https://www.facebook.com/andy.radulescu.7" target="_blank">
+            <a href="https://www.facebook.com/Tourism-worldwide-526751311145443/?modal=admin_todo_tour" target="_blank">
                 <img [src]="facebookImgSrc" (mouseover)="onMouseOver('facebook')" (mouseout)="onMouseOut('facebook')"
                      width="25px" height="25px" alt="facebook-logo">
-            </a>
-            <a href="https://www.linkedin.com/in/eduard-andrei-radulescu-980b9b13a/"
-               (mouseover)="onMouseOver('linkedin')" (mouseout)="onMouseOut('linkedin')" target="_blank">
-                <img [src]="linkedinImgSrc" width="25px" height="25px" alt="facebook-logo">
-            </a>
-            <a href="https://www.instagram.com/andyradulescu/"
-               (mouseover)="onMouseOver('instagram')" (mouseout)="onMouseOut('instagram')" target="_blank">
-                <img [src]="instagramImgSrc" width="25px" height="25px" alt="facebook-logo">
-            </a>
-            <a href="https://github.com/AndyRadulescu"
-               (mouseover)="onMouseOver('github')" (mouseout)="onMouseOut('github')" target="_blank">
-                <img [src]="githubImgSrc" width="25px" height="25px" alt="facebook-logo">
             </a>
         </div>
     </div>

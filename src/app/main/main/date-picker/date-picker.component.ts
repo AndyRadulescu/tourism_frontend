@@ -1,8 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgbCalendar, NgbDate} from '@ng-bootstrap/ng-bootstrap';
-import {from} from 'rxjs';
 import {HotelFinderService} from '../../hotel-finder.service';
-import {calendar} from 'ngx-bootstrap/chronos/moment/calendar';
 
 @Component({
     selector: 'app-date-picker',

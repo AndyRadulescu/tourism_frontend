@@ -39,11 +39,6 @@ export class MainComponent implements OnInit {
         }
     }
 
-    logout() {
-        localStorage.removeItem('token');
-        this.router.navigate(['login']);
-    }
-
     search() {
         console.log(this.locationSearch);
         if (this.dateInterval.toDate) {
@@ -71,7 +66,15 @@ export class MainComponent implements OnInit {
         const hotelList = [];
 
         roomList.forEach((item) => {
-            hotelList.push(item.hotel);
+            let ok = true;
+            hotelList.forEach((hotel) => {
+                if (hotel && item.hotel.id === hotel.id) {
+                    ok = false;
+                }
+            });
+            if (ok) {
+                hotelList.push(item.hotel);
+            }
         });
 
         return hotelList;

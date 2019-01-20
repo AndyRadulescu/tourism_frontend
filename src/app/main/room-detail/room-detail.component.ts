@@ -21,21 +21,8 @@ export class RoomDetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (!localStorage.getItem('token')) {
-            this.router.navigate(['login']);
-            return;
-        }
-        this.userService.sync().subscribe((token) => {
+        this.userService.sync();
 
-        }, (err) => {
-            console.log(err);
-            if (err.status === 401) {
-                localStorage.removeItem('token');
-                this.router.navigate(['login']);
-                return;
-            }
-        });
-        console.log('ceva2');
         this.rooms = this.globals.getRooms();
         this.route.queryParams.subscribe(params => {
             this.hotelID = params['hotel'];

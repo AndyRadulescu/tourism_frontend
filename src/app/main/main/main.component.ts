@@ -24,18 +24,7 @@ export class MainComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (!localStorage.getItem('token')) {
-            this.router.navigate(['login']);
-        } else {
-            this.userService.sync().subscribe(() => {
-            }, (err) => {
-                console.log(err);
-                if (err.status === 401) {
-                    localStorage.removeItem('token');
-                    this.router.navigate(['login']);
-                }
-            });
-        }
+        this.userService.sync();
     }
 
     search() {
@@ -43,7 +32,7 @@ export class MainComponent implements OnInit {
         if (this.dateInterval.toDate) {
             console.log(this.dateInterval);
             this.calendarOK = true;
-            this.hotelFinder.post('hotel', {
+            this.hotelFinder.post('room', {
                 country: this.auxLocationSearch,
                 dateInterval: this.dateInterval
             }).subscribe((rooms: any) => {

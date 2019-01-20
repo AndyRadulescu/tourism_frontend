@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {NavbarComponent} from '../../global/components/navbar/navbar.component';
+import {LoginTextService} from './loginText.service';
 
 @Component({
     selector: 'app-login',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
 
     notFound = false;
 
-    constructor(private router: Router, private http: HttpClient) {
+    constructor(private router: Router, private http: HttpClient, private loginTextService: LoginTextService) {
     }
 
     ngOnInit() {
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
                     localStorage.setItem('token', receivedStudent['token']);
                     this.notFound = false;
                     this.router.navigate(['']);
+                    this.loginTextService.changeMessage(true);
                 },
                 err => {
                     console.log(err);

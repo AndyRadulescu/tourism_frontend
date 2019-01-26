@@ -1,14 +1,57 @@
 <div class="container section--about-me">
-    <p>
-        <ngb-progressbar showValue="true" type="success" [value]="25"></ngb-progressbar>
-    </p>
-    <p>
-        <ngb-progressbar [showValue]="true" type="info" [value]="50"></ngb-progressbar>
-    </p>
-    <p>
-        <ngb-progressbar showValue="true" type="warning" [value]="150" [max]="200"></ngb-progressbar>
-    </p>
-    <p>
-        <ngb-progressbar [showValue]="true" type="danger" [value]="150" [max]="150"></ngb-progressbar>
-    </p>
+    <div *ngIf="hasRooms">
+        <p>
+            <ngb-progressbar showValue="true" type="success" [value]="25"></ngb-progressbar>
+        </p>
+        <p>
+            <ngb-progressbar [showValue]="true" type="info" [value]="50"></ngb-progressbar>
+        </p>
+        <p>
+            <ngb-progressbar showValue="true" type="warning" [value]="150" [max]="200"></ngb-progressbar>
+        </p>
+        <p>
+            <ngb-progressbar [showValue]="true" type="danger" [value]="150" [max]="150"></ngb-progressbar>
+        </p>
+    </div>
+
+    <div [hidden]="didLoad" class="row justify-content-center mt-2">
+        <div class="loader"></div>
+    </div>
+    <div *ngIf="!hasRooms&&didLoad" class="row justify-content-center mt-5 align-content-center">
+        <h2 class="text-info">No vacations yet.</h2>
+    </div>
+
+    <div class="shadow-box">
+        <div *ngFor="let room of roomsArray; let i= index">
+            <div class="row justify-content-center">
+                <div class="col-lg-4">
+                    <img class="image-item" src="{{room.hotel.image_url}}">
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="text-info">{{room.hotel.name}}</h3>
+                    <p>{{room.hotel.description}}</p>
+                    <p class="font-weight-bold">Contact:</p>
+                    <p class="mb-0">Email address: {{room.hotel.email}}</p>
+                    <p class="mb-0">Phone number: {{room.hotel.phone}}</p>
+                    <p class="mb-0">{{room.hotel.city}} {{room.hotel.street_address}}</p>
+                </div>
+                <div class="col-lg-4">
+                    <h3 class="text-danger">Room details:</h3>
+                    <p>Number: <b>{{room.number}}</b></p>
+                    <p>Description:<br> {{room.description}}</p>
+                    <table class="table-info">
+                        <tr>
+                            <th>Start date:</th>
+                            <th>End date:</th>
+                        </tr>
+                        <tr>
+                            <td>{{room.start_date | date}}</td>
+                            <td>{{room.end_date | date}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <hr [hidden]="roomsArray.length<=1" class="mt-0 mb-0">
+        </div>
+    </div>
 </div>

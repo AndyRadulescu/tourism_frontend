@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
     public hotelList: Hotel[];
     public dateInterval;
     public calendarOK = true;
+    public didLoad = true;
 
 
     constructor(private router: Router, private hotelFinder: HotelFinderService, private globals: GlobalsService,
@@ -28,7 +29,7 @@ export class MainComponent implements OnInit {
     }
 
     search() {
-        console.log(this.locationSearch);
+        this.didLoad = false;
         if (this.dateInterval.toDate) {
             console.log(this.dateInterval);
             this.calendarOK = true;
@@ -36,14 +37,14 @@ export class MainComponent implements OnInit {
                 country: this.auxLocationSearch,
                 dateInterval: this.dateInterval
             }).subscribe((rooms: any) => {
-                console.log(rooms);
+                this.didLoad = true;
                 this.hotelList = this.getHotelList(rooms.roomList);
                 this.globals.setRooms(rooms.roomList);
                 this.locationSearch = this.auxLocationSearch;
                 this.hotelFound = this.hotelList.length > 0;
             }, ((err) => {
-                console.log(err);
                 this.hotelFound = false;
+                this.didLoad = true;
             }));
         } else {
             this.calendarOK = false;

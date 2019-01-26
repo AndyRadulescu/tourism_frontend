@@ -28,6 +28,9 @@
             </div>
         </div>
         <div class="pb-5">
+            <div [hidden]="didLoad" class="row justify-content-center mt-2">
+                <div class="loader"></div>
+            </div>
             <app-hotel-list [hotelList]="hotelList"></app-hotel-list>
         </div>
     </div>

@@ -21,12 +21,10 @@ export class AboutmeComponent implements OnInit {
         this.userService.getRooms().subscribe((rooms: RoomObject) => {
             console.log(rooms);
             this.roomsArray = rooms.roomList;
-            this.hasRooms = !!rooms;
+            this.hasRooms = rooms.roomList.length > 0;
             this.didLoad = true;
         }, (e) => {
             this.didLoad = true;
         });
     }
-
-
 }

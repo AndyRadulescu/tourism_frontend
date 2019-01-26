@@ -1,5 +1,5 @@
 <div class="container section--about-me">
-    <div *ngIf="hasRooms">
+    <div *ngIf="hasRooms&&didLoad">
         <p>
             <ngb-progressbar showValue="true" type="success" [value]="25"></ngb-progressbar>
         </p>
